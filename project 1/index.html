@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherNote - Premium Note Sharing Platform</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="AetherNote is a premium note-sharing platform for students, researchers, and developers. Write, explore, and download notes in markdown format.">
+  <meta name="keywords" content="note sharing, markdown notes, study notes, student resources, developer cheatsheets">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Style Sheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- App Shell Container -->
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-area">
+          <div class="logo-glow"></div>
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <span class="logo-text">Aether<span class="gradient-text">Note</span></span>
+        </div>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="#" class="nav-item active" id="nav-explore">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+          <span>Explore Notes</span>
+        </a>
+        <a href="#" class="nav-item" id="nav-create">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+          </svg>
+          <span>Create Note</span>
+        </a>
+        <a href="#" class="nav-item" id="nav-workspace">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>My Workspace</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-badge" id="sidebar-user-badge">
+          <img src="" alt="Avatar" class="avatar-sm" id="sidebar-avatar">
+          <div class="user-info">
+            <span class="user-name" id="sidebar-username">Jane Doe</span>
+            <span class="user-status">Student Creator</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Navbar -->
+      <header class="navbar">
+        <div class="nav-left">
+          <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <h1 class="view-title" id="page-title">Explore Shared Notes</h1>
+        </div>
+        
+        <div class="nav-right">
+          <!-- Search Bar (specifically active/visible on explore view, but can be global) -->
+          <div class="search-container" id="nav-search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="global-search" placeholder="Search by title, author, or tag...">
+          </div>
+          
+          <!-- Theme Toggle -->
+          <button class="icon-btn theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+      
+      <!-- Content Pages Container -->
+      <div class="content-body">
+
+        <!-- VIEW 1: EXPLORE VIEW -->
+        <section id="view-explore" class="view-section">
+          <!-- Filters & Header Row -->
+          <div class="explore-header-actions">
+            <!-- Scrollable Categories Row -->
+            <div class="categories-wrapper">
+              <div class="categories-container" id="categories-container">
+                <!-- Dynamically Populated tags -->
+              </div>
+            </div>
+            
+            <!-- Sort dropdown -->
+            <div class="sort-container">
+              <label for="sort-select">Sort by:</label>
+              <select id="sort-select" class="custom-select">
+                <option value="latest">Latest Uploads</option>
+                <option value="views">Most Viewed</option>
+                <option value="upvotes">Most Liked</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Notes Grid -->
+          <div class="notes-grid" id="notes-grid">
+            <!-- Dynamically Populated Note Cards -->
+          </div>
+          
+          <div class="no-results" id="no-results" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+            <h3>No Notes Found</h3>
+            <p>Try adjusting your search criteria, selecting a different category, or starting a new query.</p>
+          </div>
+        </section>
+
+        <!-- VIEW 2: NOTE DETAILS VIEW -->
+        <section id="view-details" class="view-section" style="display: none;">
+          <div class="details-nav-back">
+            <button class="back-btn" id="details-back-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to Explore</span>
+            </button>
+          </div>
+
+          <div class="note-details-container">
+            <!-- Left Side: Content & Body -->
+            <article class="note-main-content">
+              <div class="note-content-header">
+                <div class="note-category-tag" id="note-detail-category">Computer Science</div>
+                <h2 class="note-title-lg" id="note-detail-title">Loading note title...</h2>
+                
+                <div class="note-meta-row">
+                  <div class="author-meta" id="note-detail-author-profile">
+                    <img src="" alt="Author avatar" id="note-detail-avatar" class="avatar-sm">
+                    <div class="author-info-block">
+                      <span class="author-name" id="note-detail-author">Loading author...</span>
+                      <span class="note-date" id="note-detail-date">Uploaded June 14, 2026</span>
+                    </div>
+                  </div>
+                  
+                  <div class="actions-meta">
+                    <button class="action-btn" id="note-like-btn" title="Like note">
+                      <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                      </svg>
+                      <span id="note-detail-likes">0</span>
+                    </button>
+                    <button class="action-btn" id="note-bookmark-btn" title="Bookmark note">
+                      <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                      <span>Bookmark</span>
+                    </button>
+                    <button class="action-btn" id="note-share-btn" title="Share note link">
+                      <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                      </svg>
+                      <span>Share</span>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="note-tags-row" id="note-detail-tags">
+                  <!-- Tag elements populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Main Markdown body render -->
+              <div class="markdown-body" id="note-detail-body">
+                <!-- Inner note markdown text -->
+              </div>
+            </article>
+
+            <!-- Right Side: Interaction Panel (Comments, Downloads) -->
+            <aside class="note-side-panel">
+              <!-- Fast Actions Box -->
+              <div class="panel-card download-card">
+                <h3>Actions</h3>
+                <div class="stats-mini-grid">
+                  <div class="stat-mini">
+                    <span class="stat-num" id="note-detail-views">0</span>
+                    <span class="stat-lbl">Views</span>
+                  </div>
+                  <div class="stat-mini">
+                    <span class="stat-num" id="note-detail-comments-count">0</span>
+                    <span class="stat-lbl">Comments</span>
+                  </div>
+                </div>
+                <div class="button-stack">
+                  <button class="primary-btn flex-center" id="download-md-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Markdown
+                  </button>
+                  <button class="secondary-btn flex-center" id="download-json-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    Download Raw data
+                  </button>
+                </div>
+              </div>
+
+              <!-- Author Info Card -->
+              <div class="panel-card author-card">
+                <h3>About the Author</h3>
+                <div class="author-detailed-header">
+                  <img src="" alt="" id="author-card-avatar" class="avatar-md">
+                  <div>
+                    <h4 id="author-card-name">Alex Mercer</h4>
+                    <span id="author-card-username">@alexm_dev</span>
+                  </div>
+                </div>
+                <p id="author-card-bio" class="author-bio-txt">Loading author bio information...</p>
+              </div>
+
+              <!-- Comments Section -->
+              <div class="panel-card comments-card">
+                <h3>Discussion (<span id="comments-count">0</span>)</h3>
+                
+                <!-- Comment Form -->
+                <form id="comment-form" class="comment-input-form">
+                  <textarea id="comment-textarea" placeholder="Add a question or feedback..." required rows="2"></textarea>
+                  <button type="submit" class="primary-btn-sm">Post Comment</button>
+                </form>
+
+                <!-- Comments Thread -->
+                <div class="comments-list" id="comments-list">
+                  <!-- Dynamically populated comments -->
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- VIEW 3: CREATE NOTE VIEW -->
+        <section id="view-create" class="view-section" style="display: none;">
+          <div class="editor-layout">
+            
+            <!-- Left Side: Form Controls -->
+            <div class="editor-panel-form glass-panel">
+              <h2 class="section-subtitle">Draft a New Note</h2>
+              
+              <div class="form-group">
+                <label for="editor-title">Note Title</label>
+                <input type="text" id="editor-title" placeholder="e.g. Introduction to Neural Networks" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="editor-category">Category</label>
+                  <select id="editor-category" class="custom-select">
+                    <!-- Populated dynamically -->
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="editor-tags">Tags (comma separated)</label>
+                  <input type="text" id="editor-tags" placeholder="e.g. ai, neural-networks, study-guide">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="editor-description">Short Summary</label>
+                <input type="text" id="editor-description" placeholder="A brief description of what this note covers..." maxlength="180">
+              </div>
+
+              <div class="form-group flex-grow-1 flex-column">
+                <div class="editor-content-header-row">
+                  <label for="editor-content">Content (Markdown Supported)</label>
+                  <span class="editor-tip">Supports # Headers, **Bold**, \`Code\`, lists, etc.</span>
+                </div>
+                <textarea id="editor-content" placeholder="# Welcome to AetherNote&#10;&#10;Use standard markdown tags here to write notes. Your changes are rendered live in the preview pane on the right." required></textarea>
+              </div>
+
+              <div class="editor-actions">
+                <button class="secondary-btn" id="editor-reset">Clear Draft</button>
+                <button class="primary-btn flex-center" id="editor-publish">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  Publish Note
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Side: Live Render Preview -->
+            <div class="editor-panel-preview glass-panel">
+              <div class="preview-header">
+                <h3>Live Document Preview</h3>
+                <span class="badge" id="preview-word-count">0 words</span>
+              </div>
+              <div class="markdown-body" id="editor-preview-area">
+                <!-- Live rendered MD content goes here -->
+                <div class="preview-placeholder">Start typing in the editor to see your note rendered live.</div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+
+        <!-- VIEW 4: MY WORKSPACE VIEW -->
+        <section id="view-workspace" class="view-section" style="display: none;">
+          <!-- Profile Card -->
+          <div class="profile-hero-card glass-panel">
+            <div class="profile-banner"></div>
+            <div class="profile-meta-details">
+              <div class="profile-avatar-wrapper">
+                <img src="" alt="Profile Avatar" id="workspace-profile-avatar" class="avatar-lg">
+                <div class="avatar-edit-badge" id="avatar-edit-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                  </svg>
+                </div>
+              </div>
+              
+              <div class="profile-primary-info">
+                <div class="profile-name-row">
+                  <h2 id="workspace-profile-name">Jane Doe</h2>
+                  <span class="profile-handle" id="workspace-profile-handle">@janedoe</span>
+                </div>
+                <p id="workspace-profile-bio" class="profile-bio">Computer Science student | Passionate notes compiler | AI enthusiast</p>
+              </div>
+              
+              <!-- Core User Stats Grid -->
+              <div class="profile-stats-grid">
+                <div class="profile-stat-box">
+                  <span class="stat-number" id="stats-uploads">0</span>
+                  <span class="stat-label">Notes Published</span>
+                </div>
+                <div class="profile-stat-box">
+                  <span class="stat-number" id="stats-bookmarks">0</span>
+                  <span class="stat-label">Bookmarks</span>
+                </div>
+                <div class="profile-stat-box">
+                  <span class="stat-number" id="stats-views-received">0</span>
+                  <span class="stat-label">Views Gained</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Workspace Navigation Tabs -->
+          <div class="workspace-tabs-bar">
+            <button class="workspace-tab active" id="tab-my-notes">My Uploads</button>
+            <button class="workspace-tab" id="tab-bookmarks">Saved Bookmarks</button>
+            <button class="workspace-tab" id="tab-settings">Edit Profile</button>
+          </div>
+
+          <!-- Tab Contents -->
+          <div class="workspace-tab-contents">
+            <!-- Grid lists inside workspace -->
+            <div class="workspace-notes-grid" id="workspace-notes-grid">
+              <!-- Dynamically populated workspace cards -->
+            </div>
+            
+            <!-- Settings panel content -->
+            <div class="settings-panel glass-panel" id="workspace-settings-panel" style="display: none;">
+              <h3>Update Profile Info</h3>
+              <form id="settings-profile-form">
+                <div class="form-group">
+                  <label for="settings-name">Display Name</label>
+                  <input type="text" id="settings-name" required>
+                </div>
+                <div class="form-group">
+                  <label for="settings-username">Username (@)</label>
+                  <input type="text" id="settings-username" required>
+                </div>
+                <div class="form-group">
+                  <label for="settings-avatar">Profile Avatar URL (Unsplash or direct image link)</label>
+                  <input type="url" id="settings-avatar">
+                </div>
+                <div class="form-group">
+                  <label for="settings-bio">Short Bio</label>
+                  <textarea id="settings-bio" rows="3" maxlength="300"></textarea>
+                </div>
+                <button type="submit" class="primary-btn">Save Settings</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Share Link Modal -->
+  <div class="modal-backdrop" id="share-modal" style="display: none;">
+    <div class="modal glass-panel">
+      <div class="modal-header">
+        <h3>Share Note</h3>
+        <button class="close-btn" id="close-share-modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Copy the link below to share this note with classmates or online:</p>
+        <div class="share-input-row">
+          <input type="text" id="share-url-input" readonly value="https://aethernote.app/note/123">
+          <button class="primary-btn-sm" id="copy-share-url-btn">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import mockData and app script -->
+  <script src="mockData.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
